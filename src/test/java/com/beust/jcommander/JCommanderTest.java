@@ -135,7 +135,13 @@ public class JCommanderTest {
     String[] argv = { };
     new JCommander(args, argv);
   }
-
+  
+  @Test(expectedExceptions = ParameterException.class)
+  public void singleParameterWithDuplicates() {
+    ArgsWithDuplicateParameter args = new ArgsWithDuplicateParameter();
+    String[] argv = { "-slave" };
+    new JCommander(args, argv);
+  }
   public static void main(String[] args) {
 //    new JCommanderTest().multiObjects();
     new JCommanderTest().multipleUnparsedFail();
